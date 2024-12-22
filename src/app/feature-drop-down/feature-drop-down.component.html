@@ -1,0 +1,39 @@
+<h4>Basic mat-select NGMODEL</h4>
+<mat-form-field appearance="fill">
+    <mat-label>Favorite Datas</mat-label>
+    <mat-select [(ngModel)]="selectedData" (selectionChange)="onSelectionChange($event)">
+        <mat-option *ngFor="let data of Datas" [value]="data.id">
+            {{data.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<hr>
+<select 
+    [(ngModel)]="selectedOptionData" (ngModelChange)="onSelection_Change($event)">
+    <option *ngFor="let data of Datas" [value]="data.id">{{data.name}}</option>
+</select><br>
+<button (click)="resetNgModel()">Reset Ng model</button><br>
+<button (click)="selectValueForNgModel()">Display New Value Ng model</button>
+<hr>
+<hr>
+<hr>
+<form [formGroup]="dataForm">
+<h4>Basic mat-select Reactive</h4>
+<mat-form-field appearance="fill">
+    <mat-label>Favorite Datas</mat-label>
+    <mat-select formControlName="reactiveSelectedData" (selectionChange)="onSelectionChangeReactive($event)">
+        <mat-option *ngFor="let data of Datas" [value]="data.id">
+            {{data.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<hr>
+<select 
+formControlName="reactiveSelectedOptionData" (change)="onSelection_ChangeReactive($event)">
+    <option *ngFor="let data of Datas" [value]="data.id">{{data.name}}</option>
+</select><br>
+<button (click)="resetReactive()">Reset Reactive</button><br>
+<button (click)="selectValueForReactive()">Display New Value Reactive</button>
+</form>
